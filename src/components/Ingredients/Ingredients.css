@@ -1,0 +1,32 @@
+.ingredientsBlock {
+    border: 1px solid black;
+    padding: 15px;
+]}
+
+.ingredient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: lightgrey;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ingredientsTitle {
+    font-size: 24px;
+    text-align: center;
+}
+
+.ingredientBtn {
+    border: none;
+    background: none;
+}
+
+.ingredientImg {
+    width: 100px;
+}
+
+button {
+    cursor: pointer;
+}
