@@ -5,8 +5,9 @@ import IIngredients from '../../types';
 interface Props {
     ingredients: IIngredients[];
     addIngredient: (title: string) => void;
+    removeIngredient: (title: string) => void;
 }
-const Ingredients = ({ingredients, addIngredient}: Props) => {
+const Ingredients = ({ingredients, addIngredient, removeIngredient}: Props) => {
 
     return (
         <div className={'ingredientsBlock'}>
@@ -18,10 +19,13 @@ const Ingredients = ({ingredients, addIngredient}: Props) => {
                     </button>
                     <p>{ingredient.title}</p>
                     <p>x<b>{ingredient.count}</b></p>
-                    <button type={'button'} className={'deleteBtn'}>
-                        <img src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt="bucket"
-                             style={{width: '30px'}}/>
-                    </button>
+                    {ingredient.count > 0 ? (
+                        <button type="button" className="deleteBtn" onClick={() => removeIngredient(ingredient.title)}>
+                            <img src="https://cdn-icons-png.flaticon.com/128/1214/1214428.png" alt="bucket" style={{width: '30px'}}/>
+                        </button>
+                    ) : (
+                        <p></p>
+                    )}
 
                 </div>
             ))}

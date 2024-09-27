@@ -21,10 +21,20 @@ const App = () => {
     const [ingredients, setIngredients] = useState<IIngredients[]>(ingredientsArray);
 
     const addIngredient = (title: string) => {
-        setIngredients(prevIngredients =>
-            prevIngredients.map(ingredient =>
+        setIngredients(prevState =>
+            prevState.map(ingredient =>
                 ingredient.title === title
                     ? { ...ingredient, count: ingredient.count + 1 }
+                    : ingredient
+            )
+        );
+    };
+
+    const removeIngredient = (title: string) => {
+        setIngredients(prevIngredients =>
+            prevIngredients.map(ingredient =>
+                ingredient.title === title && ingredient.count > 0
+                    ? { ...ingredient, count: ingredient.count - 1 }
                     : ingredient
             )
         );
@@ -33,7 +43,7 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <Ingredients ingredients={ingredients} addIngredient={addIngredient}/>
+        <Ingredients ingredients={ingredients} addIngredient={addIngredient} removeIngredient={removeIngredient}/>
         <Burger ingredients={ingredients}/>
       </div>
     </>
